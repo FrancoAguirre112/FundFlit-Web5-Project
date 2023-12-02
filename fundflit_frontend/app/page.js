@@ -1,113 +1,74 @@
-import Image from 'next/image'
+import Card from "./components/Card";
+import Header from "./components/Header";
+import { CiSearch } from "react-icons/ci";
+import { generateItemsArray } from "../dataUtils";
+import FaqSection from "./components/FaqSection";
+import Link from "next/link";
 
 export default function Home() {
+  const items = generateItemsArray(10);
+
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div className="z-10 max-w-5xl w-full items-center justify-between font-mono text-sm lg:flex">
-        <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
-          Get started by editing&nbsp;
-          <code className="font-mono font-bold">app/page.js</code>
-        </p>
-        <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:h-auto lg:w-auto lg:bg-none">
-          <a
-            className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0"
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{' '}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className="dark:invert"
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
+    <main>
+      <Header />
+
+      {/* Donation section */}
+      <div className="relative flex items-center flex-col text-Black">
+        <h2 className="sm:mt-[8rem] mt-[4rem] sm:text-[2rem] text-[1.5rem] font-bold ">
+          Open <span className=" text-Green">donation</span>
+        </h2>
+
+        <label className="flex self-center justify-between items-center sm:px-8 px-5 py-1 sm:mt-16 mt-8 cursor-pointer rounded-[40px] sm:w-[60%] w-[75%] bg-white shadow-lg">
+          <input type="text" placeholder="Search..." className=" focus:outline-none sm:text-lg text-base py-3 w-[90%]" />
+          <CiSearch className="text-[1.7rem]"/>
+        </label>
+
+        {/* search tags */}
+        <div className=" flex flex-wrap sm:w-[80%] w-[90%] justify-center sm:gap-7 gap-4 sm:mt-16 sm:mb-24 mt-12 mb-16">
+          <span className=" text-Black bg-Green rounded-[40px] border-2 border-Green cursor-pointer px-4 py-1 sm:text-base
+  text-sm font-bold">
+            All
+          </span>
+          <span className="search-tag rounded-[40px] "> Children </span>
+          <span className="search-tag rounded-[40px] "> Charity </span>
+          <span className="search-tag rounded-[40px] "> Animal </span>
+          <span className="search-tag rounded-[40px] "> Health </span>
+          <span className="search-tag rounded-[40px] "> Education </span>
         </div>
-      </div>
 
-      <div className="relative flex place-items-center before:absolute before:h-[300px] before:w-[480px] before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-[240px] after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700 before:dark:opacity-10 after:dark:from-sky-900 after:dark:via-[#0141ff] after:dark:opacity-40 before:lg:h-[360px] z-[-1]">
-        <Image
-          className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
+        {/* Donation cards */}
+        <div className="flex flex-wrap justify-center items-center gap-10 w-[90%]">
+          {items.slice(0, 6).map((item) => (
+            <Card key={item.id} item={item} />
+          ))}
+        </div>
 
-      <div className="mb-32 grid text-center lg:max-w-5xl lg:w-full lg:mb-0 lg:grid-cols-4 lg:text-left">
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Docs{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Find in-depth information about Next.js features and API.
-          </p>
-        </a>
+        {/* post navigation items */}
+        <div className="py-8 flex justify-between items-center w-[80%]">
+          <div>
+            <span>1</span>
+          </div>
+          <Link href='/fundraiser'>
+          <div className="flex items-center hover:underline">
+            <span className=" text-Black mr-2 text-lg">See More</span>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="15"
+              height="8"
+              viewBox="0 0 15 8"
+              fill="none">
+              <path
+                d="M14.3537 4.35355C14.5489 4.15829 14.5489 3.84171 14.3537 3.64645L11.1717 0.464465C10.9764 0.269203 10.6598 0.269203 10.4646 0.464465C10.2693 0.659727 10.2693 0.97631 10.4646 1.17157L13.293 4L10.4646 6.82843C10.2693 7.02369 10.2693 7.34027 10.4646 7.53553C10.6599 7.7308 10.9764 7.7308 11.1717 7.53553L14.3537 4.35355ZM0.000122114 4.5L14.0001 4.5L14.0001 3.5L0.000122027 3.5L0.000122114 4.5Z"
+                fill="#26FF91"
+              />
+            </svg>
+          </div>
+          </Link>
+        </div>
 
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800 hover:dark:bg-opacity-30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Learn{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Learn about Next.js in an interactive course with&nbsp;quizzes!
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Templates{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Explore starter templates for Next.js.
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Deploy{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
+        {/* Frequently asked questions section */}
+        <FaqSection />
       </div>
     </main>
-  )
+  );
 }
