@@ -52,7 +52,8 @@ const Faq = () => {
           <div key={item.id}>
             <div
               className="bg-white flex items-center justify-between px-3 py-6 mb-[1px] rounded-md w-full cursor-pointer font-semibold"
-              onClick={() => toggleAnswer(item.id)}>
+              onClick={() => toggleAnswer(item.id)}
+            >
               <span className="text-[1rem]">{item.question}</span>
               <IoIosArrowDropdown
                 style={{
@@ -68,7 +69,8 @@ const Faq = () => {
                 opacity: visibleAnswer === item.id ? 1 : 0,
                 height: visibleAnswer === item.id ? "5rem" : "0",
                 transition: "opacity 0.2s ease-in-out, height 0.3s ease-in-out",
-              }}>
+              }}
+            >
               {item.answer}
             </div>
           </div>
