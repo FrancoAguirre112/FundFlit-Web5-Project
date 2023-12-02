@@ -30,6 +30,10 @@ module.exports = {
       },
       animation: {
         "fade-in": "animate-fade-in 0.4s ease-out backwards",
+      colors: {
+        Green: "#00b14f",
+        greenVariant: "#33c172",
+        Black: "#242426",
       },
     },
   },

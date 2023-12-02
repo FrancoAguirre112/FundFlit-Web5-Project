@@ -65,3 +65,10 @@ const CampaignCreate = () => {
 };
 
 export default CampaignCreate;
+const Create = () => {
+  return (
+    <div>Create</div>
+  )
+}
+
+export default Create
