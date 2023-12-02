@@ -1,7 +1,17 @@
-import { Inter } from "next/font/google";
 import "./globals.css";
+import { Nunito, Montserrat } from "next/font/google";
 
-const inter = Inter({ subsets: ["latin"] });
+const nunito = Nunito({
+  weight: ["400", "500", "600", "700"],
+  style: "normal",
+  subsets: ["latin"],
+});
+
+const montserrat = Montserrat({
+  weight: ["400", "500", "600", "700"],
+  style: "normal",
+  subsets: ["latin"],
+});
 
 export const metadata = {
   title: "FundFlit - Revolutionizing crowdfunding with web5",
@@ -11,7 +21,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className="font-nunito">{children}</body>
     </html>
   );
 }
